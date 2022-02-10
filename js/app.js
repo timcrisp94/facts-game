@@ -59,4 +59,4 @@
 // - Add Google Fonts
 // - Add the HTML for a Light/Dark Mode button.
 // - Add light/dark mode
-// - Add a favicon to our site
+// - Add a favicon to our site 
