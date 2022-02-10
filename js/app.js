@@ -1,3 +1,29 @@
+console.log("hi");
+
+
+/*-------------------------------- Constants --------------------------------*/
+
+
+
+/*-------------------------------- Variables --------------------------------*/
+
+
+
+/*------------------------ Cached Element References ------------------------*/
+
+
+
+/*----------------------------- Event Listeners -----------------------------*/
+
+
+
+/*-------------------------------- Functions --------------------------------*/
+
+
+
+
+
+
 // this is a game called "facts"
 
 // in this game, a player will be presented a card with a quote, number, or bit of information. the player determines whether the "fact" will be true or false. they earn points for answering correctly, and receive a strike for answering incorrectly, until the player earns a third strike, ending the game. point values increase as the game switches from easy, to medium, and difficult. 
