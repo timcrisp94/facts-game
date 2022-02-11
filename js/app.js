@@ -2,24 +2,36 @@ console.log("hi");
 
 
 /*-------------------------------- Constants --------------------------------*/
-
+// const data
 
 
 /*-------------------------------- Variables --------------------------------*/
-
+// let player, score, strikes
 
 
 /*------------------------ Cached Element References ------------------------*/
+const notecard = document.querySelector(".notecard")
+const displayCategory = document.querySelector("#category")
+const displayFact = document.querySelector("#display-fact")
+const displayScore = document.querySelector("#display-score")
+const displayStrikes = document.querySelector("#display-strikes")
+const message = document.querySelector("#message")
+const trueBtn = document.querySelector("#true-btn")
+const falseBtn = document.querySelector("#false-btn")
 
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-
+trueBtn.addEventListener("click", handleClick);
+falseBtn.addEventListener("click", handleClick);
 
 
 /*-------------------------------- Functions --------------------------------*/
 
-
+init();
+function init(){
+    
+}
 
 
 
