@@ -19,19 +19,24 @@ const message = document.querySelector("#message")
 const trueBtn = document.querySelector("#true-btn")
 const falseBtn = document.querySelector("#false-btn")
 
-
+console.log(notecard);
+console.log(displayCategory, displayFact, displayScore, displayStrikes, message, trueBtn, falseBtn)
 
 /*----------------------------- Event Listeners -----------------------------*/
-trueBtn.addEventListener("click", handleClick);
-falseBtn.addEventListener("click", handleClick);
+// trueBtn.addEventListener("click", handleClick);
+// falseBtn.addEventListener("click", handleClick);
 
 
 /*-------------------------------- Functions --------------------------------*/
 
-init();
-function init(){
+// init();
+// function init(){
+    // fact = data.random
+    // score = ("")
     
-}
+    // 
+
+// }
 
 
 
