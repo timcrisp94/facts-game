@@ -33,23 +33,22 @@ const falseBtn = document.querySelector("#false-btn")
 
 /*-------------------------------- Functions --------------------------------*/
 
-// init();
-// function init(){
+init();
+function init(){
+    displayStrikes.setAttribute("hidden", true)
+    getFacts();
     
-//     displayCategory = " "
-//     displayScore = " "
-//     displayStrikes.setAttribute("hidden", true)
-//     render();
-        
-        //displayFact = getFact.fact
-// }    
+}    
 
-let getFacts = {}
+function getFacts() {
     for (let i = 0; i < data.length - 1; i++) {
         let getFact = data[Math.floor(Math.random()*data.length)]
         console.log(getFact.fact);
         }
-// (data) {
+    
+}
+
+
 //     return (data.fact)[Math.floor((Math.random()*data.length))]
 //     console.log(getFacts);
 //     }
