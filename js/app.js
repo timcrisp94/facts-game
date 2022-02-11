@@ -29,14 +29,19 @@ console.log(displayCategory, displayFact, displayScore, displayStrikes, message,
 
 /*-------------------------------- Functions --------------------------------*/
 
-// init();
-// function init(){
+init();
+function init(){
     // fact = data.random
-    // score = ("")
-    
-    // 
+    displayCategory = " "
+    displayScore = " "
+    displayStrikes.setAttribute("hidden", true)
+    displayFact = " "
+    render();
+}    
 
-// }
+function render() {
+    // 
+}
 
 
 

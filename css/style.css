@@ -7,10 +7,30 @@ body {
 }
 
 h1 {
-  align-items: center;
   display: flex;
+  align-items: center;
   justify-content: center;
   padding: 24px;
   font-family: 'IBM Plex Mono', monospace;
 }
+
+.notecard {
+  
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  width: 500px;
+  height: 300px;
+  font-family: 'IBM Plex Mono', monospace;
+
+}
+
+#true-btn, #false-btn {
+    border: px solid #302f3a;
+    color: #302f3a;
+    position: relative;
+    margin: 1rem 3rem;
+    font-size: 1.15rem;
+    
+  }
 
