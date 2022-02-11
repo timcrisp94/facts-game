@@ -1,12 +1,19 @@
-console.log("hi");
+console.log("hi")
 
 
 /*-------------------------------- Constants --------------------------------*/
-// const data
+const data = [
+{fact: `'I am I because my little dog knows me.' Wrote Gertrude Stein.`,
+answer: ('true'), mess: `The little dog, a poodle named basket.`,
+}, {fact: `Wayne Gretzky retired with 51 NHL records.`, 
+answer: ('false'), mess: `Gretzky held 61 NHL records when he retired in 1999.`
+}]
+console.log(data)
+console.log(data[0].fact)
 
 
 /*-------------------------------- Variables --------------------------------*/
-// let player, score, strikes
+let player, score, strikes
 
 
 /*------------------------ Cached Element References ------------------------*/
@@ -19,9 +26,6 @@ const message = document.querySelector("#message")
 const trueBtn = document.querySelector("#true-btn")
 const falseBtn = document.querySelector("#false-btn")
 
-console.log(notecard);
-console.log(displayCategory, displayFact, displayScore, displayStrikes, message, trueBtn, falseBtn)
-
 /*----------------------------- Event Listeners -----------------------------*/
 // trueBtn.addEventListener("click", handleClick);
 // falseBtn.addEventListener("click", handleClick);
@@ -29,19 +33,40 @@ console.log(displayCategory, displayFact, displayScore, displayStrikes, message,
 
 /*-------------------------------- Functions --------------------------------*/
 
-init();
-function init(){
-    // fact = data.random
-    displayCategory = " "
-    displayScore = " "
-    displayStrikes.setAttribute("hidden", true)
-    displayFact = " "
-    render();
-}    
+// init();
+// function init(){
+    
+//     displayCategory = " "
+//     displayScore = " "
+//     displayStrikes.setAttribute("hidden", true)
+//     render();
+        
+        //displayFact = getFact.fact
+// }    
 
-function render() {
-    // 
-}
+let getFacts = {}
+    for (let i = 0; i < data.length - 1; i++) {
+        let getFact = data[Math.floor(Math.random()*data.length)]
+        console.log(getFact.fact);
+        }
+// (data) {
+//     return (data.fact)[Math.floor((Math.random()*data.length))]
+//     console.log(getFacts);
+//     }
+
+// getFacts();
+
+// function handleClick(event){
+
+// }
+
+// function render() {
+//     // message
+//     // score
+//     // strike
+//     // timer
+//     // init
+// }
 
 
 
@@ -72,20 +97,19 @@ function render() {
 //      |  * message                                         |
 //      |____________________________________________________|
 
-// 
+
 //  AAU I will click a button for true or false. 
-    //  the buttons will animate green for true and red for false,
-    //  this animation will be delayed 1-2 seconds.
+//      the buttons will animate green for true and red for false,
+//      this animation will be delayed 1-2 seconds.
 //  AAU I will see a message on the bottom lines of the card related t
-    // to the above "fact" (player answer, state of the fact)
-    // for an answer (true, true) = [congratulations]
-    // for an answer (true, false) && (false, false)= [ammended]
-    // for an answer (false, true) = [noSeriously]
+//     to the above "fact" (player answer, state of the fact)
+//     for an answer (true, true) = [congratulations]
+//     for an answer (true, false) && (false, false)= [ammended]
+//     for an answer (false, true) = [noSeriously]
 //  AAU I will receive points for each correct answer
 //  AAU the difficulty of the game will increase
-    // from easy to medium to difficult
-//  AAU I will receive a tick mark in the top right corner of the card
-    // for each incorrect answer
+//     from easy to medium to difficult
+//  AAU I will receive a tick mark in the top right corner of the card for each incorrect answer
 //  AAU the game will be over after three strikes
 
 // - Add the HTML for card and t/f buttons 
@@ -105,6 +129,5 @@ function render() {
 // - When the delete button is clicked, remove the quote from the array
 // - Add responsive design
 // - Add Google Fonts
-// - Add the HTML for a Light/Dark Mode button.
-// - Add light/dark mode
-// - Add a favicon to our site 
+// - Add the HTML for a Light/Dark Mode button 
+// - Add light/dark mode 
