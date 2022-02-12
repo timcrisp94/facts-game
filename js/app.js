@@ -23,8 +23,14 @@ const displayFact = document.querySelector("#display-fact")
 const displayScore = document.querySelector("#display-score")
 const displayStrikes = document.querySelector("#display-strikes")
 const message = document.querySelector("#message")
+const form = document.querySelector(".buttons")
 const trueBtn = document.querySelector("#true-btn")
 const falseBtn = document.querySelector("#false-btn")
+
+console.log(notecard, displayCategory, displayFact, displayScore, displayStrikes, message, trueBtn, falseBtn)
+// console.log(form)
+
+
 
 /*----------------------------- Event Listeners -----------------------------*/
 // trueBtn.addEventListener("click", handleClick);
@@ -35,6 +41,7 @@ const falseBtn = document.querySelector("#false-btn")
 
 init();
 function init(){
+    
     displayStrikes.setAttribute("hidden", true)
     getFacts();
     
@@ -43,7 +50,7 @@ function init(){
 function getFacts() {
     for (let i = 0; i < data.length - 1; i++) {
         let getFact = data[Math.floor(Math.random()*data.length)]
-        console.log(getFact.fact);
+        displayFact.innerText = (getFact.fact);
         }
     
 }
