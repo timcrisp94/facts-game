@@ -16,9 +16,9 @@
 
 /*-------------------------------- Constants --------------------------------*/
 const data = [
-{fact: `'I am I because my little dog knows me.' Wrote Gertrude Stein.`, category: 'literature',
+{fact: `'I am I because my little dog knows me.' Wrote Gertrude Stein.`, category: 'literature', points: 50,
 answer: ('true'), mess: `The little dog, a poodle named basket.`,
-}, {fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports',
+}, {fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports', points: 50,
 answer: ('false'), mess: `Gretzky held 61 NHL records when he retired in 1999.`
 }]
 console.log(data)
@@ -26,19 +26,19 @@ console.log(data[0].fact)
 
 
 /*-------------------------------- Variables --------------------------------*/
-let player, score, strikes, points, answer
+let player, score, strikes, trivia, points, answer
 // The reason I'm going to store that message in a variable is so that I can set it during any number of different functions that I write and then once that function invokes render, we can display whatever that message is in our render. I set message as a variable and then render this message to an element that we set as a CER, whenever my render function is invoked. 
 
 /*------------------------ Cached Element References ------------------------*/
 const notecard = document.querySelector(".notecard")
 const displayCategory = document.querySelector("#category")
-const displayFact = document.querySelector("#display-fact")
+const displayFact = document.querySelector("#trivia")
 const displayScore = document.querySelector("#display-score")
 const displayStrikes = document.querySelector("#display-strikes")
 const displayMessage = document.querySelector("#message")
 const form = document.querySelector(".buttons")
-const trueBtn = document.querySelector("#true-btn")
-const falseBtn = document.querySelector("#false-btn")
+const trueBtn = document.querySelector("#true")
+const falseBtn = document.querySelector("#false")
 
 console.log(notecard, displayCategory, displayFact, displayScore, displayStrikes, displayMessage, trueBtn, falseBtn)
 // console.log(form)
@@ -46,10 +46,9 @@ console.log(notecard, displayCategory, displayFact, displayScore, displayStrikes
 
 
 /*----------------------------- Event Listeners -----------------------------*/
- trueBtn.addEventListener("click", function(evt) {
+trueBtn.addEventListener("click", function(evt) {
     console.log(evt.target);
-    evt.preventDefault();
-    
+    evt.preventDefault(); 
 
 });
 falseBtn.addEventListener("click", function(evt){
@@ -72,24 +71,42 @@ function init(){
     
 }   
 
+function getFacts() {
+    let getFact = data[Math.floor(Math.random()*data.length)]
+    isTrue = getFact.answer;
+    console.log(getFact.points)
+    displayFact.textContent = getFact.fact;
+    displayCategory.textContent += (' ' + getFact.category);
+    displayMessage.textContent = getFact.mess
+    render()
+}
+
 function render() {
     console.log('render invoked')
-    
+    //displayMessage.removeAttribute("hidden")
+    console.log(isTrue);
+    // if isTrue === btn => add points
+    // if isTrue !== btn => add strike
+
+
+
 }
 
 function handleButtonClick() {
 
 }
 
-function getFacts() {
-    let getFact = data[Math.floor(Math.random()*data.length)]
-    console.log(getFact.fact, getFact.category, getFact.answer);
-    displayFact.textContent = (getFact.fact);
-    displayCategory.textContent += (' ' + getFact.category);
-}
+function answerCheck() {
+    if (isTrue === "true"){ 
+        console.log("true") 
+        //displayScore.textContent += (' ' + getFact.points)
+    } else {
+        console.log("false")
+    }
+   render()
+} 
 
-
-
+answerCheck()
 
 
 
