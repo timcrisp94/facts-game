@@ -1,109 +1,4 @@
-console.log("hi")
-
-
-/*-------------------------------- Constants --------------------------------*/
-const data = [
-{fact: `'I am I because my little dog knows me.' Wrote Gertrude Stein.`,
-answer: ('true'), mess: `The little dog, a poodle named basket.`,
-}, {fact: `Wayne Gretzky retired with 51 NHL records.`, 
-answer: ('false'), mess: `Gretzky held 61 NHL records when he retired in 1999.`
-}]
-console.log(data)
-console.log(data[0].fact)
-
-
-/*-------------------------------- Variables --------------------------------*/
-let player, score, strikes
-
-
-/*------------------------ Cached Element References ------------------------*/
-const notecard = document.querySelector(".notecard")
-const displayCategory = document.querySelector("#category")
-const displayFact = document.querySelector("#display-fact")
-const displayScore = document.querySelector("#display-score")
-const displayStrikes = document.querySelector("#display-strikes")
-const message = document.querySelector("#message")
-const form = document.querySelector(".buttons")
-const trueBtn = document.querySelector("#true-btn")
-const falseBtn = document.querySelector("#false-btn")
-
-console.log(notecard, displayCategory, displayFact, displayScore, displayStrikes, message, trueBtn, falseBtn)
-// console.log(form)
-
-
-
-/*----------------------------- Event Listeners -----------------------------*/
-// trueBtn.addEventListener("click", handleClick);
-// falseBtn.addEventListener("click", handleClick);
-
-
-/*-------------------------------- Functions --------------------------------*/
-
-init();
-function init(){
-    
-    displayStrikes.setAttribute("hidden", true)
-    getFacts();
-    
-}    
-
-function getFacts() {
-    for (let i = 0; i < data.length - 1; i++) {
-        let getFact = data[Math.floor(Math.random()*data.length)]
-        displayFact.innerText = (getFact.fact);
-        }
-    
-}
-
-
-//     return (data.fact)[Math.floor((Math.random()*data.length))]
-//     console.log(getFacts);
-//     }
-
-// getFacts();
-
-// function handleClick(event){
-
-// }
-
-// function render() {
-//     // message
-//     // score
-//     // strike
-//     // timer
-//     // init
-// }
-
-
-
-
-// this is a game called "facts"
-
-// in this game, a player will be presented a card with a quote, number, or bit of information. the player determines whether the "fact" will be true or false. they earn points for answering correctly, and receive a strike for answering incorrectly, until the player earns a third strike, ending the game. point values increase as the game switches from easy, to medium, and difficult. 
-
-// categories: music, movies, sports, quotes, academia
-
-// here is what a card will look like in "facts"
-
-
-// *------------------------------------------------------------------*//
-
-//                              "facts"
-//       _____________________________________________________
-//      |                                      | |           |
-//      | category: (category)                 score: 75,000 |
-//      | ___________________________________________________|
-//      |                                                    |
-//      |                                                    |
-//      |      "I am I because my little dog knows me,"      |
-//      |       wrote Gertrude Stein.                        |
-//      |                                                    |
-//      |                         (True) (False)             |
-//      |                                                    |
-//      |  * message                                         |
-//      |____________________________________________________|
-
-
+// X // AAU I will be presented with a fact
 //  AAU I will click a button for true or false. 
 //      the buttons will animate green for true and red for false,
 //      this animation will be delayed 1-2 seconds.
@@ -117,6 +12,98 @@ function getFacts() {
 //     from easy to medium to difficult
 //  AAU I will receive a tick mark in the top right corner of the card for each incorrect answer
 //  AAU the game will be over after three strikes
+
+
+/*-------------------------------- Constants --------------------------------*/
+const data = [
+{fact: `'I am I because my little dog knows me.' Wrote Gertrude Stein.`, category: 'literature',
+answer: ('true'), mess: `The little dog, a poodle named basket.`,
+}, {fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports',
+answer: ('false'), mess: `Gretzky held 61 NHL records when he retired in 1999.`
+}]
+console.log(data)
+console.log(data[0].fact)
+
+
+/*-------------------------------- Variables --------------------------------*/
+let player, score, strikes, points, answer
+// The reason I'm going to store that message in a variable is so that I can set it during any number of different functions that I write and then once that function invokes render, we can display whatever that message is in our render. I set message as a variable and then render this message to an element that we set as a CER, whenever my render function is invoked. 
+
+/*------------------------ Cached Element References ------------------------*/
+const notecard = document.querySelector(".notecard")
+const displayCategory = document.querySelector("#category")
+const displayFact = document.querySelector("#display-fact")
+const displayScore = document.querySelector("#display-score")
+const displayStrikes = document.querySelector("#display-strikes")
+const displayMessage = document.querySelector("#message")
+const form = document.querySelector(".buttons")
+const trueBtn = document.querySelector("#true-btn")
+const falseBtn = document.querySelector("#false-btn")
+
+console.log(notecard, displayCategory, displayFact, displayScore, displayStrikes, displayMessage, trueBtn, falseBtn)
+// console.log(form)
+
+
+
+/*----------------------------- Event Listeners -----------------------------*/
+ trueBtn.addEventListener("click", function(evt) {
+    console.log(evt.target);
+    evt.preventDefault();
+    
+
+});
+falseBtn.addEventListener("click", function(evt){
+    console.log(evt.target);
+    evt.preventDefault();
+});     
+
+/*-------------------------------- Functions --------------------------------*/
+
+init();
+function init(){
+    console.log('init invoked')
+    score = 0;
+    strikes = 0;
+    displayStrikes.setAttribute("hidden", true)
+    displayMessage.setAttribute("hidden", true)
+    getFacts();
+    // score
+    render();
+    
+}   
+
+function render() {
+    console.log('render invoked')
+    
+}
+
+function handleButtonClick() {
+
+}
+
+function getFacts() {
+    let getFact = data[Math.floor(Math.random()*data.length)]
+    console.log(getFact.fact, getFact.category, getFact.answer);
+    displayFact.textContent = (getFact.fact);
+    displayCategory.textContent += (' ' + getFact.category);
+}
+
+
+
+
+
+
+// this is a game called "facts"
+
+// in this game, a player will be presented a card with a quote, number, or bit of information. the player determines whether the "fact" will be true or false. they earn points for answering correctly, and receive a strike for answering incorrectly, until the player earns a third strike, ending the game. point values increase as the game switches from easy, to medium, and difficult. 
+
+// categories: music, movies, sports, quotes, academia
+
+// here is what a card will look like in "facts"
+
+
+
+
 
 // - Add the HTML for card and t/f buttons 
 // - Add a container element for the card components to be appended to
