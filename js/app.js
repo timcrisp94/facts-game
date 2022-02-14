@@ -1,13 +1,13 @@
 // X // AAU I will be presented with a fact
-//  AAU I will click a button for true or false. 
+// X AAU I will click a button for true or false. 
 //      the buttons will animate green for true and red for false,
-//      this animation will be delayed 1-2 seconds.
-//  AAU I will see a message on the bottom lines of the card related t
+//  X    this animation will be delayed 1-2 seconds.
+//  X AAU I will see a message on the bottom lines of the card related t
 //     to the above "fact" (player answer, state of the fact)
 //     for an answer (true, true) = [congratulations]
 //     for an answer (true, false) && (false, false)= [ammended]
 //     for an answer (false, true) = [noSeriously]
-//  AAU I will receive points for each correct answer
+//  X AAU I will receive points for each correct answer
 //  AAU the difficulty of the game will increase
 //     from easy to medium to difficult
 //  AAU I will receive a tick mark in the top right corner of the card for each incorrect answer
@@ -81,32 +81,44 @@ function render() {
     displayCategory.textContent = ('category: ' + category)
     displayScore.textContent = ("score: " + score)
     displayMessage.setAttribute("hidden", true)
+    //form.removeAttribute("hidden")
     
 }
 function handleClickTrue(event) {
     event.preventDefault();
+    //form.setAttribute("hidden", true)
     console.log(event.target.id);
     console.log(theAnswer)
     if (theAnswer === "true") {
         score = score + points
         console.log(score)
         console.log(points)
+        trueBtn.style.backgroundColor = "green" 
+        trueBtn.style.color = "white"
+        s
+        displayMessage.style.color = "green"
     } else {
     displayStrikes.removeAttribute("hidden")
+    displayMessage.style.color = "red"
     strikes = strikes + 1   
     }
+    
     secondRender();
 }
 function handleClickFalse(event) {
     event.preventDefault();
+    //form.setAttribute("hidden", true)
     console.log(event.target.id);
     console.log(theAnswer)
     if (theAnswer === "false") {
     score = score + points
     console.log(points)
     console.log(score)
+    falseBtn.style.backgroundColor = "red" 
+    falseBtn.style.color = "white"
     } else {
     displayStrikes.removeAttribute("hidden")
+    displayMessage.style.color = "green"
     strikes = strikes + 1
     }
     secondRender();
@@ -119,6 +131,7 @@ function secondRender() {
         displayMessage.removeAttribute("hidden")
         displayMessage.textContent = message   
      }, 1000)
+     
      setTimeout(function() { 
         getFacts();
         render();
