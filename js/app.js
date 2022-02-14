@@ -18,7 +18,8 @@
 const data = [
 {fact: `'I am I because my little dog knows me.' Wrote Gertrude Stein.`, category: 'literature', points: 50,
 answer: ('true'), mess: `The little dog, a poodle named basket.`,
-}, {fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports', points: 50,
+}, 
+{fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports', points: 50,
 answer: ('false'), mess: `Gretzky held 61 NHL records when he retired in 1999.`
 }]
 console.log(data)
@@ -26,13 +27,13 @@ console.log(data[0].fact)
 
 
 /*-------------------------------- Variables --------------------------------*/
-let player, score, strikes, trivia, points, answer
-// The reason I'm going to store that message in a variable is so that I can set it during any number of different functions that I write and then once that function invokes render, we can display whatever that message is in our render. I set message as a variable and then render this message to an element that we set as a CER, whenever my render function is invoked. 
 
+// The reason I'm going to store that message in a variable is so that I can set it during any number of different functions that I write and then once that function invokes render, we can display whatever that message is in our render. I set message as a variable and then render this message to an element that we set as a CER, whenever my render function is invoked. 
+let player, score, strikes, fact, message, category, points, theAnswer
 /*------------------------ Cached Element References ------------------------*/
 const notecard = document.querySelector(".notecard")
 const displayCategory = document.querySelector("#category")
-const displayFact = document.querySelector("#trivia")
+const displayFact = document.querySelector("#fact")
 const displayScore = document.querySelector("#display-score")
 const displayStrikes = document.querySelector("#display-strikes")
 const displayMessage = document.querySelector("#message")
@@ -46,67 +47,102 @@ console.log(notecard, displayCategory, displayFact, displayScore, displayStrikes
 
 
 /*----------------------------- Event Listeners -----------------------------*/
-trueBtn.addEventListener("click", function(evt) {
-    console.log(evt.target);
-    evt.preventDefault(); 
-
-});
-falseBtn.addEventListener("click", function(evt){
-    console.log(evt.target);
-    evt.preventDefault();
-});     
-
+trueBtn.addEventListener("click", handleClickTrue)
+falseBtn.addEventListener("click", handleClickFalse)
 /*-------------------------------- Functions --------------------------------*/
-
 init();
 function init(){
     console.log('init invoked')
-    score = 0;
-    strikes = 0;
+    score = 0   
+    strikes = 0
     displayStrikes.setAttribute("hidden", true)
-    displayMessage.setAttribute("hidden", true)
     getFacts();
-    // score
     render();
-    
 }   
-
 function getFacts() {
     let getFact = data[Math.floor(Math.random()*data.length)]
-    isTrue = getFact.answer;
-    console.log(getFact.points)
-    displayFact.textContent = getFact.fact;
-    displayCategory.textContent += (' ' + getFact.category);
-    displayMessage.textContent = getFact.mess
-    render()
+    fact = getFact.fact;
+    category = getFact.category
+    theAnswer = getFact.answer
+    points = getFact.points
+    message = getFact.mess
+    render();
 }
+console.log(fact, category, theAnswer, points, message)
 
 function render() {
-    console.log('render invoked')
-    //displayMessage.removeAttribute("hidden")
-    console.log(isTrue);
-    // if isTrue === btn => add points
-    // if isTrue !== btn => add strike
-
-
-
+    displayFact.textContent = fact;
+    displayCategory.textContent = ('category: ' + category)
+    displayScore.textContent = ("score: " + score)
+    displayMessage.setAttribute("hidden", true)
 }
-
-function handleButtonClick() {
-
-}
-
-function answerCheck() {
-    if (isTrue === "true"){ 
-        console.log("true") 
-        //displayScore.textContent += (' ' + getFact.points)
+function handleClickTrue(event) {
+    event.preventDefault();
+    console.log(event.target.id);
+    console.log(theAnswer)
+    if (theAnswer === "true") {
+        score = score + points
+        console.log(score)
+        console.log(points)
     } else {
-        console.log("false")
+    displayStrikes.removeAttribute("hidden")
+    strikes = strikes + 1   
     }
-   render()
-} 
+    secondRender();
+}
+function handleClickFalse(event) {
+    event.preventDefault();
+    console.log(event.target.id);
+    console.log(theAnswer)
+    if (theAnswer === "false") {
+    score = score + points
+    console.log(points)
+    console.log(score)
+    } else {
+    displayStrikes.removeAttribute("hidden")
+    strikes = strikes + 1
+    }
+    secondRender();
+}
 
-answerCheck()
+function secondRender() {
+     displayScore.textContent = ("score: " + score)
+     displayStrikes.textContent = ("strikes: " + strikes)
+     setTimeout(function() {
+        displayMessage.removeAttribute("hidden")
+        displayMessage.textContent = message   
+     }, 1000)
+     
+
+}
+// // }
+
+// breaks - 35 min; ask for clarity; engineering
+
+
+//render => take data and display
+    // 
+//(second render) => respond to player guess -- handleClick
+
+// function handleClick(); 
+   //true button
+    // if theAnswer === true {
+        // change button color
+        // add to points
+    // } else {
+        // change false button color
+        // add strike
+    // false button
+    // if theAnswer === false {
+        // change button color
+        // add to points
+    // } else {
+        // change false button color
+        // add strike
+  
+
+
+
 
 
 
