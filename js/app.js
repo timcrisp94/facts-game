@@ -81,12 +81,16 @@ function render() {
     displayCategory.textContent = ('category: ' + category)
     displayScore.textContent = ("score: " + score)
     displayMessage.setAttribute("hidden", true)
-    //form.removeAttribute("hidden")
+    trueBtn.style.backgroundColor = "#EFEFEF" 
+    trueBtn.style.color = "black"
+    falseBtn.style.backgroundColor = "#EFEFEF"
+    falseBtn.style.color = "black"
+    // form.removeAttribute("hidden")
     
 }
 function handleClickTrue(event) {
     event.preventDefault();
-    //form.setAttribute("hidden", true)
+    // form.setAttribute("hidden", true)
     console.log(event.target.id);
     console.log(theAnswer)
     if (theAnswer === "true") {
@@ -95,7 +99,6 @@ function handleClickTrue(event) {
         console.log(points)
         trueBtn.style.backgroundColor = "green" 
         trueBtn.style.color = "white"
-        s
         displayMessage.style.color = "green"
     } else {
     displayStrikes.removeAttribute("hidden")
@@ -107,7 +110,7 @@ function handleClickTrue(event) {
 }
 function handleClickFalse(event) {
     event.preventDefault();
-    //form.setAttribute("hidden", true)
+    // form.setAttribute("hidden", true)
     console.log(event.target.id);
     console.log(theAnswer)
     if (theAnswer === "false") {
@@ -116,9 +119,11 @@ function handleClickFalse(event) {
     console.log(score)
     falseBtn.style.backgroundColor = "red" 
     falseBtn.style.color = "white"
+    displayMessage.style.color = "red"
     } else {
     displayStrikes.removeAttribute("hidden")
     displayMessage.style.color = "green"
+    console.log(displayMessage.style.color)
     strikes = strikes + 1
     }
     secondRender();
@@ -130,6 +135,7 @@ function secondRender() {
      setTimeout(function() {
         displayMessage.removeAttribute("hidden")
         displayMessage.textContent = message   
+
      }, 1000)
      
      setTimeout(function() { 
