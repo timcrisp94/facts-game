@@ -29,7 +29,7 @@ console.log(data[0].fact)
 /*-------------------------------- Variables --------------------------------*/
 
 // The reason I'm going to store that message in a variable is so that I can set it during any number of different functions that I write and then once that function invokes render, we can display whatever that message is in our render. I set message as a variable and then render this message to an element that we set as a CER, whenever my render function is invoked. 
-let player, score, strikes, fact, message, category, points, theAnswer
+let player, score, strikes, fact, message, category, points, theAnswer, usedFacts
 /*------------------------ Cached Element References ------------------------*/
 const notecard = document.querySelector(".notecard")
 const displayCategory = document.querySelector("#category")
@@ -58,14 +58,20 @@ function init(){
     displayStrikes.setAttribute("hidden", true)
     getFacts();
     render();
+    usedFacts = []
 }   
 function getFacts() {
     let getFact = data[Math.floor(Math.random()*data.length)]
+    let idx = data.indexOf(getFact)
+    console.log(idx)
+    usedFacts = data.splice(idx, 1)
+    console.log(usedFacts)
     fact = getFact.fact;
     category = getFact.category
     theAnswer = getFact.answer
     points = getFact.points
     message = getFact.mess
+    
     render();
 }
 console.log(fact, category, theAnswer, points, message)
@@ -75,6 +81,7 @@ function render() {
     displayCategory.textContent = ('category: ' + category)
     displayScore.textContent = ("score: " + score)
     displayMessage.setAttribute("hidden", true)
+    
 }
 function handleClickTrue(event) {
     event.preventDefault();
@@ -112,11 +119,12 @@ function secondRender() {
         displayMessage.removeAttribute("hidden")
         displayMessage.textContent = message   
      }, 1000)
-     
+     setTimeout(function() { 
+        getFacts();
+        render();
 
+    }, 3000)
 }
-// // }
-
 // breaks - 35 min; ask for clarity; engineering
 
 
