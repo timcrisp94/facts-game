@@ -26,6 +26,7 @@ console.log(data[0].fact)
 
 // The reason I'm going to store that message in a variable is so that I can set it during any number of different functions that I write and then once that function invokes render, we can display whatever that message is in our render. I set message as a variable and then render this message to an element that we set as a CER, whenever my render function is invoked. 
 let player, score, fact, message, category, theAnswer, usedFacts = []
+let hasAnswered = false
 /*------------------------ Cached Element References ------------------------*/
 const notecard = document.querySelector(".notecard")
 const displayCategory = document.querySelector("#category")
@@ -35,6 +36,8 @@ const displayMessage = document.querySelector("#message")
 const form = document.querySelector(".buttons")
 const trueBtn = document.querySelector("#true")
 const falseBtn = document.querySelector("#false")
+const gameOver = document.querySelector("#game-over")
+gameOver.setAttribute("hidden", true);
 
 console.log(notecard, displayCategory, displayFact, displayScore, displayMessage, trueBtn, falseBtn)
 // console.log(form)
@@ -53,10 +56,15 @@ function init(){
     getFacts();
     render();
 }   
+
+
+
 function getFacts() {
-    if (usedFacts.length === 5) {
-        console.log("game over");
+    if(turn === 5) {
+        gameOver.removeAttribute("hidden")
+        form.setAttribute("hidden", true)
     }
+
     let getFact = data.pop()
     console.log(getFact)
     usedFacts.push(getFact)
@@ -66,7 +74,6 @@ function getFacts() {
     theAnswer = getFact.answer
     message = getFact.mess
    
-    
     render();
 }
 console.log(fact, category, theAnswer, message)
@@ -80,82 +87,87 @@ function render() {
     trueBtn.style.color = "black"
     falseBtn.style.backgroundColor = "#EFEFEF"
     falseBtn.style.color = "black"
-    console.log(turn);
-    console.log(usedFacts.length)
-
-    // form.removeAttribute("hidden")
     
 }
 function handleClickTrue(event) {
-    console.log(turn);
-    console.log(usedFacts.length);
-    // if (turn < usedFacts.length) { 
     event.preventDefault();
-    console.log(event.target.id);
-    console.log(theAnswer);
-    if (theAnswer === "true") {
+    if (!hasAnswered) {
+        if (theAnswer === "true") {
+            // hasAnswered = true
+            score = score + 1;
+            console.log(score)
+            console.log(turn)
+            console.log(usedFacts.length)
+            trueBtn.style.backgroundColor = "green"
+            trueBtn.style.color = "white"
+            displayMessage.style.color = "green"
+        } else {
+            falseBtn.style.backgroundColor = "red"
+            falseBtn.style.color = "white"
+            displayMessage.style.color = "red"
+        }
+        hasAnswered = true;
+        secondRender();
+    } else {
+        return
+    }
+    
+
+}
+
+
+
+function handleClickFalse(event) {
+    event.preventDefault();
+    if (!hasAnswered) {
+
+        if (theAnswer === "false") { 
         score += 1;
         console.log(score)
         console.log(turn)
-        console.log(usedFacts.length)
+        falseBtn.style.backgroundColor = "red" 
+        falseBtn.style.color = "white"
+        displayMessage.style.color = "red"
+        } else {
         trueBtn.style.backgroundColor = "green" 
         trueBtn.style.color = "white"
         displayMessage.style.color = "green"
-    } else {
-    falseBtn.style.backgroundColor = "red" 
-    falseBtn.style.color = "white"
-    displayMessage.style.color = "red"
-    }
-    secondRender();
-//   } else {
-    // return
+        }
+        hasAnswered = true;
+        secondRender();
+        } else {
+            return
+        }
+    
 }
 
-
-// }
-function handleClickFalse(event) {
-    event.preventDefault();
-    console.log(event.target.id);
-    console.log(theAnswer)
-    if (theAnswer === "false") {
-    score += 1;
-    console.log(score)
-    console.log(turn)
-    falseBtn.style.backgroundColor = "red" 
-    falseBtn.style.color = "white"
-    displayMessage.style.color = "red"
-    } else {
-        trueBtn.style.backgroundColor = "green" 
-        trueBtn.style.color = "white"
-    displayMessage.style.color = "green"
-    }
-    secondRender();
-}
-console.log (turn);
-console.log(usedFacts.length)
 function secondRender() {
     if (turn < usedFacts.length) {
-    //     return
-    // }
-    turn ++
-    console.log(turn)
-    displayScore.textContent = ("score: " + score + "/" + turn);
-     setTimeout(function() {
-        displayMessage.removeAttribute("hidden")
-        displayMessage.textContent = message   
+        turn++
+        console.log(turn)
+        console.log(score)
+        displayScore.textContent = ("score: " + score + "/" + turn);
+        setTimeout(function () {
+            displayMessage.removeAttribute("hidden")
+            displayMessage.textContent = message
 
-     }, 1000)
-     
-     setTimeout(function() { 
-        getFacts();
-        render();
+        }, 1000)
 
-    }, 3000)
-} else {
-    return
+        setTimeout(function () {
+            hasAnswered = false
+            getFacts();
+            render();
+
+        }, 3000)
+    } else {
+        return
+    }
 }
-}
+
 // breaks - 35 min; ask for clarity; engineering
+
+// create boolean value let hasanswered = false
+
 
 
 //render => take data and display
