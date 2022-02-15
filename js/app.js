@@ -10,6 +10,7 @@
 /*-------------------------------- Constants --------------------------------*/
 
 const data = [
+{fact: `fact`, category: `category`, answer: `true`, mess: `bye bye`},    
 {fact: `'I am I because my little dog knows me.'\n\ Wrote Gertrude Stein.`, category: 'literature',
 answer: 'true', mess: `The little dog was a poodle named basket.`}, 
 {fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports', answer: 'false', mess: `Gretzky held 61 NHL records when he retired in 1999.`}, 
@@ -53,23 +54,23 @@ function init(){
     render();
 }   
 function getFacts() {
-    let getFact = data[Math.floor(Math.random()*data.length)]
-    const idx = data.indexOf(getFact)
-    console.log(idx)
-    usedFacts = 
+    if (usedFacts.length === 5) {
+        console.log("game over");
+    }
+    let getFact = data.pop()
+    console.log(getFact)
+    usedFacts.push(getFact)
     console.log(usedFacts)
-    // if (data.length = 0) {
-    //     console.log("game over")
-    // }
-    //let getFact = data.pop();
     fact = getFact.fact;
     category = getFact.category
     theAnswer = getFact.answer
     message = getFact.mess
+   
     
     render();
 }
 console.log(fact, category, theAnswer, message)
+
 
 function render() {
     displayFact.textContent = fact;
@@ -79,45 +80,66 @@ function render() {
     trueBtn.style.color = "black"
     falseBtn.style.backgroundColor = "#EFEFEF"
     falseBtn.style.color = "black"
+    console.log(turn);
+    console.log(usedFacts.length)
+
     // form.removeAttribute("hidden")
     
 }
 function handleClickTrue(event) {
+    console.log(turn);
+    console.log(usedFacts.length);
+    // if (turn < usedFacts.length) { 
     event.preventDefault();
     console.log(event.target.id);
     console.log(theAnswer);
-    turn += 1;
     if (theAnswer === "true") {
         score += 1;
         console.log(score)
+        console.log(turn)
+        console.log(usedFacts.length)
         trueBtn.style.backgroundColor = "green" 
         trueBtn.style.color = "white"
         displayMessage.style.color = "green"
     } else {
+    falseBtn.style.backgroundColor = "red" 
+    falseBtn.style.color = "white"
     displayMessage.style.color = "red"
     }
-    
     secondRender();
+//   } else {
+    // return
 }
+
+
+// }
 function handleClickFalse(event) {
     event.preventDefault();
     console.log(event.target.id);
     console.log(theAnswer)
-    turn += 1;
     if (theAnswer === "false") {
     score += 1;
     console.log(score)
+    console.log(turn)
     falseBtn.style.backgroundColor = "red" 
     falseBtn.style.color = "white"
     displayMessage.style.color = "red"
     } else {
+        trueBtn.style.backgroundColor = "green" 
+        trueBtn.style.color = "white"
     displayMessage.style.color = "green"
     }
     secondRender();
 }
-
+console.log (turn);
+console.log(usedFacts.length)
 function secondRender() {
-     displayScore.textContent = ("score: " + score + "/" + turn);
+    if (turn < usedFacts.length) {
+    //     return
+    // }
+    turn ++
+    console.log(turn)
+    displayScore.textContent = ("score: " + score + "/" + turn);
      setTimeout(function() {
         displayMessage.removeAttribute("hidden")
         displayMessage.textContent = message   
@@ -129,6 +151,9 @@ function secondRender() {
         render();
 
     }, 3000)
+} else {
+    return
+}
 }
 // breaks - 35 min; ask for clarity; engineering
 
