@@ -3,23 +3,16 @@
 //      the buttons will animate green for true and red for false,
 //  X    this animation will be delayed 1-2 seconds.
 //  X AAU I will see a message on the bottom lines of the card related t
-//     to the above "fact" (player answer, state of the fact)
-//     for an answer (true, true) = [congratulations]
-//     for an answer (true, false) && (false, false)= [ammended]
-//     for an answer (false, true) = [noSeriously]
-//  X AAU I will receive points for each correct answer
-//  AAU the difficulty of the game will increase
-//     from easy to medium to difficult
-//  AAU I will receive a tick mark in the top right corner of the card for each incorrect answer
+
 //  AAU the game will be over after three strikes
 
 
 /*-------------------------------- Constants --------------------------------*/
 const data = [
-{fact: `'I am I because my little dog knows me.' Wrote Gertrude Stein.`, category: 'literature', points: 50,
-answer: ('true'), mess: `The little dog, a poodle named basket.`,
+{fact: `'I am I because my little dog knows me.' Wrote Gertrude Stein.`, category: 'literature',
+answer: ('true'), mess: `The little dog was a poodle named basket.`,
 }, 
-{fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports', points: 50,
+{fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports',
 answer: ('false'), mess: `Gretzky held 61 NHL records when he retired in 1999.`
 }]
 console.log(data)
@@ -29,19 +22,18 @@ console.log(data[0].fact)
 /*-------------------------------- Variables --------------------------------*/
 
 // The reason I'm going to store that message in a variable is so that I can set it during any number of different functions that I write and then once that function invokes render, we can display whatever that message is in our render. I set message as a variable and then render this message to an element that we set as a CER, whenever my render function is invoked. 
-let player, score, strikes, fact, message, category, points, theAnswer, usedFacts
+let player, score, fact, message, category, theAnswer, usedFacts
 /*------------------------ Cached Element References ------------------------*/
 const notecard = document.querySelector(".notecard")
 const displayCategory = document.querySelector("#category")
 const displayFact = document.querySelector("#fact")
 const displayScore = document.querySelector("#display-score")
-const displayStrikes = document.querySelector("#display-strikes")
 const displayMessage = document.querySelector("#message")
 const form = document.querySelector(".buttons")
 const trueBtn = document.querySelector("#true")
 const falseBtn = document.querySelector("#false")
 
-console.log(notecard, displayCategory, displayFact, displayScore, displayStrikes, displayMessage, trueBtn, falseBtn)
+console.log(notecard, displayCategory, displayFact, displayScore, displayMessage, trueBtn, falseBtn)
 // console.log(form)
 
 
@@ -53,9 +45,8 @@ falseBtn.addEventListener("click", handleClickFalse)
 init();
 function init(){
     console.log('init invoked')
-    score = 0   
-    strikes = 0
-    displayStrikes.setAttribute("hidden", true)
+    score = 0  
+    turn = 0
     getFacts();
     render();
     usedFacts = []
@@ -69,7 +60,6 @@ function getFacts() {
     fact = getFact.fact;
     category = getFact.category
     theAnswer = getFact.answer
-    points = getFact.points
     message = getFact.mess
     
     render();
@@ -79,7 +69,6 @@ console.log(fact, category, theAnswer, points, message)
 function render() {
     displayFact.textContent = fact;
     displayCategory.textContent = ('category: ' + category)
-    displayScore.textContent = ("score: " + score)
     displayMessage.setAttribute("hidden", true)
     trueBtn.style.backgroundColor = "#EFEFEF" 
     trueBtn.style.color = "black"
@@ -90,48 +79,41 @@ function render() {
 }
 function handleClickTrue(event) {
     event.preventDefault();
-    // form.setAttribute("hidden", true)
     console.log(event.target.id);
-    console.log(theAnswer)
+    console.log(theAnswer);
+    turn += 1;
     if (theAnswer === "true") {
-        score = score + points
+        score += 1;
         console.log(score)
-        console.log(points)
         trueBtn.style.backgroundColor = "green" 
         trueBtn.style.color = "white"
         displayMessage.style.color = "green"
     } else {
-    displayStrikes.removeAttribute("hidden")
     displayMessage.style.color = "red"
-    strikes = strikes + 1   
     }
     
     secondRender();
 }
 function handleClickFalse(event) {
     event.preventDefault();
-    // form.setAttribute("hidden", true)
     console.log(event.target.id);
     console.log(theAnswer)
+    turn += 1;
     if (theAnswer === "false") {
-    score = score + points
+    score += 1;
     console.log(points)
     console.log(score)
     falseBtn.style.backgroundColor = "red" 
     falseBtn.style.color = "white"
     displayMessage.style.color = "red"
     } else {
-    displayStrikes.removeAttribute("hidden")
     displayMessage.style.color = "green"
-    console.log(displayMessage.style.color)
-    strikes = strikes + 1
     }
     secondRender();
 }
 
 function secondRender() {
-     displayScore.textContent = ("score: " + score)
-     displayStrikes.textContent = ("strikes: " + strikes)
+     displayScore.textContent = ("score: " + score + "/" + turn);
      setTimeout(function() {
         displayMessage.removeAttribute("hidden")
         displayMessage.textContent = message   
@@ -150,25 +132,6 @@ function secondRender() {
 //render => take data and display
     // 
 //(second render) => respond to player guess -- handleClick
-
-// function handleClick(); 
-   //true button
-    // if theAnswer === true {
-        // change button color
-        // add to points
-    // } else {
-        // change false button color
-        // add strike
-    // false button
-    // if theAnswer === false {
-        // change button color
-        // add to points
-    // } else {
-        // change false button color
-        // add strike
-  
-
-
 
 
 
