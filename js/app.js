@@ -8,13 +8,15 @@
 
 
 /*-------------------------------- Constants --------------------------------*/
+
 const data = [
-{fact: `'I am I because my little dog knows me.' Wrote Gertrude Stein.`, category: 'literature',
-answer: ('true'), mess: `The little dog was a poodle named basket.`,
-}, 
-{fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports',
-answer: ('false'), mess: `Gretzky held 61 NHL records when he retired in 1999.`
-}]
+{fact: `'I am I because my little dog knows me.'\n\ Wrote Gertrude Stein.`, category: 'literature',
+answer: 'true', mess: `The little dog was a poodle named basket.`}, 
+{fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports', answer: 'false', mess: `Gretzky held 61 NHL records when he retired in 1999.`}, 
+{fact: `While Brian Cox was playing Hannibal Lector in Manhunter, Anthony Hopkins was playing King Lear on-stage in England. While Anthony Hopkins was playing Hannibal Lector in Silence of the Lambs, Brian Cox was playing King Lear on stage in England.`, category: 'the movies', answer: 'true', mess: 'Crazy, right?'},
+{fact: `The famous bass lines from Seinfeld were performed by Red Hot Chili Peppers founding member Flea`, 
+category: 'television', answer: 'false', mess: 'Composer Jonathan Wolf actually used a synthesizer for his iconic theme.'}]
+
 console.log(data)
 console.log(data[0].fact)
 
@@ -22,7 +24,7 @@ console.log(data[0].fact)
 /*-------------------------------- Variables --------------------------------*/
 
 // The reason I'm going to store that message in a variable is so that I can set it during any number of different functions that I write and then once that function invokes render, we can display whatever that message is in our render. I set message as a variable and then render this message to an element that we set as a CER, whenever my render function is invoked. 
-let player, score, fact, message, category, theAnswer, usedFacts
+let player, score, fact, message, category, theAnswer, usedFacts = []
 /*------------------------ Cached Element References ------------------------*/
 const notecard = document.querySelector(".notecard")
 const displayCategory = document.querySelector("#category")
@@ -49,14 +51,17 @@ function init(){
     turn = 0
     getFacts();
     render();
-    usedFacts = []
 }   
 function getFacts() {
     let getFact = data[Math.floor(Math.random()*data.length)]
-    let idx = data.indexOf(getFact)
+    const idx = data.indexOf(getFact)
     console.log(idx)
-    usedFacts = data.splice(idx, 1)
+    usedFacts = 
     console.log(usedFacts)
+    // if (data.length = 0) {
+    //     console.log("game over")
+    // }
+    //let getFact = data.pop();
     fact = getFact.fact;
     category = getFact.category
     theAnswer = getFact.answer
@@ -64,7 +69,7 @@ function getFacts() {
     
     render();
 }
-console.log(fact, category, theAnswer, points, message)
+console.log(fact, category, theAnswer, message)
 
 function render() {
     displayFact.textContent = fact;
@@ -101,7 +106,6 @@ function handleClickFalse(event) {
     turn += 1;
     if (theAnswer === "false") {
     score += 1;
-    console.log(points)
     console.log(score)
     falseBtn.style.backgroundColor = "red" 
     falseBtn.style.color = "white"
