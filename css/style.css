@@ -1,32 +1,35 @@
 body {
-  background-color: #181a1b;
-  color: #d1cdc7;
-  margin-top: 50px;
-  text-align: center;
+  color: black;
+  margin: 0;
   font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  min-height: 100vh;
 }
-
 h1 {
-  display: flex;
-  align-items: left;
-  padding: 24px;
   font-family: 'IBM Plex Mono', monospace;
+  font-size: 24px;
+  margin: auto;
+  
 }
-
-.notecard {
+.grid-container {
   border: 3px solid black;
   width: 500px;
   height: 300px;
   font-family: 'IBM Plex Mono', monospace;
+  align-items: baseline;
+  background: #fdf7ef;
+  box-shadow: 3px 6px 5px; 
+  
 
 }
 
 #true-btn, #false-btn {
+    display: grid;
     border: px solid #302f3a;
     color: #302f3a;
-    position: relative;
     margin: 1rem 3rem;
     font-size: 1.15rem;
     
   }
 
+  

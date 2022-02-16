@@ -28,7 +28,7 @@ console.log(data[0].fact)
 let player, score, fact, message, category, theAnswer, usedFacts = []
 let hasAnswered = false
 /*------------------------ Cached Element References ------------------------*/
-const notecard = document.querySelector(".notecard")
+const notecard = document.querySelector(".grid-container")
 const displayCategory = document.querySelector("#category")
 const displayFact = document.querySelector("#fact")
 const displayScore = document.querySelector("#display-score")
@@ -39,36 +39,25 @@ const falseBtn = document.querySelector("#false")
 const gameOver = document.querySelector("#game-over")
 gameOver.setAttribute("hidden", true);
 
-console.log(notecard, displayCategory, displayFact, displayScore, displayMessage, trueBtn, falseBtn)
-// console.log(form)
-
-
-
 /*----------------------------- Event Listeners -----------------------------*/
 trueBtn.addEventListener("click", handleClickTrue)
 falseBtn.addEventListener("click", handleClickFalse)
 /*-------------------------------- Functions --------------------------------*/
 init();
 function init(){
-    console.log('init invoked')
     score = 0  
     turn = 0
     getFacts();
     render();
 }   
 
-
-
 function getFacts() {
     if(turn === 5) {
         gameOver.removeAttribute("hidden")
         form.setAttribute("hidden", true)
     }
-
     let getFact = data.pop()
-    console.log(getFact)
     usedFacts.push(getFact)
-    console.log(usedFacts)
     fact = getFact.fact;
     category = getFact.category
     theAnswer = getFact.answer
@@ -76,8 +65,6 @@ function getFacts() {
    
     render();
 }
-console.log(fact, category, theAnswer, message)
-
 
 function render() {
     displayFact.textContent = fact;
@@ -93,11 +80,7 @@ function handleClickTrue(event) {
     event.preventDefault();
     if (!hasAnswered) {
         if (theAnswer === "true") {
-            // hasAnswered = true
             score = score + 1;
-            console.log(score)
-            console.log(turn)
-            console.log(usedFacts.length)
             trueBtn.style.backgroundColor = "green"
             trueBtn.style.color = "white"
             displayMessage.style.color = "green"
@@ -115,16 +98,11 @@ function handleClickTrue(event) {
 
 }
 
-
-
 function handleClickFalse(event) {
     event.preventDefault();
     if (!hasAnswered) {
-
         if (theAnswer === "false") { 
         score += 1;
-        console.log(score)
-        console.log(turn)
         falseBtn.style.backgroundColor = "red" 
         falseBtn.style.color = "white"
         displayMessage.style.color = "red"
@@ -144,67 +122,19 @@ function handleClickFalse(event) {
 function secondRender() {
     if (turn < usedFacts.length) {
         turn++
-        console.log(turn)
-        console.log(score)
         displayScore.textContent = ("score: " + score + "/" + turn);
         setTimeout(function () {
             displayMessage.removeAttribute("hidden")
             displayMessage.textContent = message
-
         }, 1000)
-
         setTimeout(function () {
             hasAnswered = false
             getFacts();
             render();
 
-        }, 3000)
+        }, 4000)
     } else {
-        return
+    return
     }
 }
 
-// breaks - 35 min; ask for clarity; engineering
-
-// create boolean value let hasanswered = false
-
-
-
-//render => take data and display
-    // 
-//(second render) => respond to player guess -- handleClick
-
-
-
-
-// this is a game called "facts"
-
-// in this game, a player will be presented a card with a quote, number, or bit of information. the player determines whether the "fact" will be true or false. they earn points for answering correctly, and receive a strike for answering incorrectly, until the player earns a third strike, ending the game. point values increase as the game switches from easy, to medium, and difficult. 
-
-// categories: music, movies, sports, quotes, academia
-
-// here is what a card will look like in "facts"
-
-
-
-
-
-// - Add the HTML for card and t/f buttons 
-// - Add a container element for the card components to be appended to
-// - Add cached element references for card and for each of the buttons
-// - Add a cached element reference for the container element in the JS file
-// - Add event listeners to each of the buttons
-// - Write and export functions to access data
-// - Import the functions that will access data
-// - Ensure the functions that we have built will work as intended.
-// - Tweak event listeners so that the quote is stored in a variable
-// - Create a test card element with Bootstrap
-// - Create a render function
-// - Add a function to handle appending a card to the container element
-// - Style each card differently, based on who the quote is from
-// - Add a button to the card so that we can remove the quote from the array
-// - When the delete button is clicked, remove the quote from the array
-// - Add responsive design
-// - Add Google Fonts
-// - Add the HTML for a Light/Dark Mode button 
-// - Add light/dark mode 
