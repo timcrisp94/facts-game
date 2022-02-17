@@ -1,7 +1,8 @@
 /*-------------------------------- Constants --------------------------------*/
 
 let data = [
-{fact: `Though Aretha Franklin's version of "Respect" is the most well-known, it was originally recorded by the song's writer, Stevie Wonder.`, category: `music`, answer: `false`, mess: `That would be Otis Redding.`},    
+{fact: `Though Aretha Franklin's version of "Respect" is the most well-known, it was originally recorded by the song's writer, Stevie Wonder.`, category: `music`, answer: `false`, mess: `That would be Otis Redding.`},
+{fact: `General Relativity: 1915.`, category: `academia`, answer: `true`, mess: `Einstein's theory was confirmed by the total solar eclipse of May 29, 1919.`}    
 {fact: `'I am I because my little dog knows me.' Wrote Gertrude Stein.`, category: 'literature',
 answer: 'true', mess: `The little dog was a poodle named Basket.`}, 
 {fact: `The octave and major 5th were discovered by Pythagoras.`, category: 'music', answer: 'true', mess: 'The triangle guy!'},

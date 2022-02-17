@@ -1,6 +1,11 @@
+## this is a game called "facts"
+
+<p> In this game, a player is presented a card with a quote, number, or bit of information. The player determines whether the "fact" will be true or false. Each game consists of five facts </p>
+
+<p> The "facts" categories include: music, movies, sports, quotes, academia</p>
 
 
-## If you want to play the game, check it out here:   https://timcrisp94.github.io/facts-game/
+## Getting Started: If you want to play the game, check it out here:   https://timcrisp94.github.io/facts-game/
 
 ## User Stories
 <ul>
@@ -15,12 +20,18 @@
 <li>AAU, I should see a game over message and a reset button</li>
 </ul>
 
+## Images
+<ul>
+  <li>Header ![header](images/pythagoras.png)
+  <li>
+
 ## ⚙ Technologies used
 <ul>
   <li>Javascript</li>
   <li>CSS</li>
   <li>HTML</li>
   <li>Google Fonts</li>
+  <li>flexbox</li>
   <li>git</li>
 </ul>
 
