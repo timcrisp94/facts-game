@@ -27,6 +27,9 @@ console.log(data[0].fact)
 // The reason I'm going to store that message in a variable is so that I can set it during any number of different functions that I write and then once that function invokes render, we can display whatever that message is in our render. I set message as a variable and then render this message to an element that we set as a CER, whenever my render function is invoked. 
 let player, score, fact, message, category, theAnswer, usedFacts = []
 let hasAnswered = false
+let timer;
+let timeLeft = 60;
+
 /*------------------------ Cached Element References ------------------------*/
 const notecard = document.querySelector(".grid-container")
 const displayCategory = document.querySelector("#category")
@@ -37,11 +40,14 @@ const form = document.querySelector(".buttons")
 const trueBtn = document.querySelector("#true")
 const falseBtn = document.querySelector("#false")
 const gameOver = document.querySelector("#game-over")
-gameOver.setAttribute("hidden", true);
+const timerBtn = document.querySelector("#timer-btn")
+
 
 /*----------------------------- Event Listeners -----------------------------*/
 trueBtn.addEventListener("click", handleClickTrue)
 falseBtn.addEventListener("click", handleClickFalse)
+timerBtn.addEventListener("click", handleClickTimer)
+console.log(timerBtn);
 /*-------------------------------- Functions --------------------------------*/
 init();
 function init(){
@@ -50,6 +56,7 @@ function init(){
     getFacts();
     render();
 }   
+
 
 function getFacts() {
     if(turn === 5) {
@@ -80,7 +87,7 @@ function handleClickTrue(event) {
     event.preventDefault();
     if (!hasAnswered) {
         if (theAnswer === "true") {
-            score = score + 1;
+            score += 1;
             trueBtn.style.backgroundColor = "green"
             trueBtn.style.color = "white"
             displayMessage.style.color = "green"
@@ -138,3 +145,36 @@ function secondRender() {
     }
 }
 
+
+function handleClickTimer() {
+    start();
+    console.log("hi)")
+    
+}
+
+// function gameOver() {
+   
+//     cancelInterval(timer);
+    
+   
+//   }
+  
+  function updateTimer() {
+    
+    if(timeLeft >= 0) {
+        timeLeft = timeLeft - 1;
+    }
+    
+    else {
+      gameOver();
+    }
+  }
+  
+  
+  function handleClickTimer() {
+    
+    timer = setInterval(updateTimer, 1000);
+    updateTimer();
+    
+     
+  }
