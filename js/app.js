@@ -13,13 +13,11 @@ let data = [
 {fact: `Though Aretha Franklin's version of "Respect" is the most well-known, it was originally recorded by the song's writer, Stevie Wonder.`, category: `category`, answer: `false`, mess: `That would be Otis Redding.`},    
 {fact: `'I am I because my little dog knows me.'\n\ Wrote Gertrude Stein.`, category: 'literature',
 answer: 'true', mess: `The little dog was a poodle named basket.`}, 
+{fact: `The octave and major 5th were discovered by Pythagoras`, category: 'music', answer: 'true', mess: 'The triangle guy.'},
 {fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports', answer: 'false', mess: `Gretzky held 61 NHL records when he retired in 1999.`}, 
 {fact: `Jack Nicholson made a then record $60 million for his role as the Joker in 1989's Batman`, category: 'the movies', answer: 'true', mess: 'Nicholson earned points off the box office AND on merchandise'},
 {fact: `The famous bass lines from Seinfeld were performed by Red Hot Chili Peppers founding member Flea`, 
 category: 'television', answer: 'false', mess: 'Composer Jonathan Wolf actually used a synthesizer for his iconic theme.'}]
-
-console.log(data)
-console.log(data[0].fact)
 
 
 /*-------------------------------- Variables --------------------------------*/
@@ -32,6 +30,35 @@ const timerEl = document.getElementById("timer");
 const goBtn = document.getElementById("go-button");
 
 
+
+
+
+
+/*------------------------ Cached Element References ------------------------*/
+const notecard = document.querySelector(".grid-container")
+const displayCategory = document.querySelector("#category")
+const displayFact = document.querySelector("#fact")
+const displayScore = document.querySelector("#display-score")
+const displayMessage = document.querySelector("#message")
+const form = document.querySelector(".buttons")
+const trueBtn = document.querySelector("#true")
+const falseBtn = document.querySelector("#false")
+const timerBtn = document.querySelector("#timer-btn")
+const gameOver = document.querySelector("#game-over")
+
+/*----------------------------- Event Listeners -----------------------------*/
+trueBtn.addEventListener("click", handleClickTrue)
+falseBtn.addEventListener("click", handleClickFalse)
+// timerBtn.addEventListener("click", handleClickTimer)
+// console.log(timerBtn);
+/*-------------------------------- Functions --------------------------------*/
+init();
+function init(){
+    score = 0  
+    turn = 0
+    getFacts();
+    render();
+}   
 
 goBtn.addEventListener("click", handleClickGo);
 
@@ -52,46 +79,16 @@ function handleClickGo(event) {
     goBtn.setAttribute = ("hidden", true)
 }
 
-
-/*------------------------ Cached Element References ------------------------*/
-const notecard = document.querySelector(".grid-container")
-const displayCategory = document.querySelector("#category")
-const displayFact = document.querySelector("#fact")
-const displayScore = document.querySelector("#display-score")
-const displayMessage = document.querySelector("#message")
-const form = document.querySelector(".buttons")
-const trueBtn = document.querySelector("#true")
-const falseBtn = document.querySelector("#false")
-const timerBtn = document.querySelector("#timer-btn")
-
-
-/*----------------------------- Event Listeners -----------------------------*/
-trueBtn.addEventListener("click", handleClickTrue)
-falseBtn.addEventListener("click", handleClickFalse)
-// timerBtn.addEventListener("click", handleClickTimer)
-// console.log(timerBtn);
-/*-------------------------------- Functions --------------------------------*/
-init();
-function init(){
-    score = 0  
-    turn = 0
-    getFacts();
-    render();
-}   
-
-
 function getFacts() {
-    if(usedFacts.length === 5) {
-        trueBtn.setAttribute("hidden", true)
-        falseBtn.setAttribute("hidden", true)
-    } 
+    
+    gameOver.setAttribute("hidden", true) 
     let randomIndex = Math.floor(Math.random()*data.length)
     let getFact = data[randomIndex]
-    console.log(getFact);
-    data.splice(randomIndex, 1);
+    console.log(getFact)
+    data.splice(randomIndex, 1)
     usedFacts.push(getFact)
     console.log(usedFacts)
-    fact = getFact.fact;
+    fact = getFact.fact
     category = getFact.category
     theAnswer = getFact.answer
     message = getFact.mess
@@ -100,6 +97,13 @@ function getFacts() {
 }
 
 function render() {
+    if(usedFacts.length > 5){
+        trueBtn.setAttribute("hidden", true);
+        falseBtn.setAttribute("hidden", true);
+        gameOver.removeAttribute("hidden");
+        displayFact.setAttribute("hidden", true);
+        displayCategory.setAttribute("hidden", true);
+    }
     displayFact.textContent = fact;
     displayCategory.textContent = ('category: ' + category)
     displayMessage.setAttribute("hidden", true)
