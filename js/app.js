@@ -9,12 +9,12 @@
 
 /*-------------------------------- Constants --------------------------------*/
 
-const data = [
-{fact: `fact`, category: `category`, answer: `true`, mess: `bye bye`},    
+let data = [
+{fact: `Though Aretha Franklin's version of "Respect" is the most well-known, it was originally recorded by the song's writer, Stevie Wonder.`, category: `category`, answer: `false`, mess: `That would be Otis Redding.`},    
 {fact: `'I am I because my little dog knows me.'\n\ Wrote Gertrude Stein.`, category: 'literature',
 answer: 'true', mess: `The little dog was a poodle named basket.`}, 
 {fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports', answer: 'false', mess: `Gretzky held 61 NHL records when he retired in 1999.`}, 
-{fact: `While Brian Cox was playing Hannibal Lector in Manhunter, Anthony Hopkins was playing King Lear on-stage in England. While Anthony Hopkins was playing Hannibal Lector in Silence of the Lambs, Brian Cox was playing King Lear on stage in England.`, category: 'the movies', answer: 'true', mess: 'Crazy, right?'},
+{fact: `Jack Nicholson made a then record $60 million for his role as the Joker in 1989's Batman`, category: 'the movies', answer: 'true', mess: 'Nicholson earned points off the box office AND on merchandise'},
 {fact: `The famous bass lines from Seinfeld were performed by Red Hot Chili Peppers founding member Flea`, 
 category: 'television', answer: 'false', mess: 'Composer Jonathan Wolf actually used a synthesizer for his iconic theme.'}]
 
@@ -36,20 +36,20 @@ const goBtn = document.getElementById("go-button");
 goBtn.addEventListener("click", handleClickGo);
 
 function handleClickGo(event) {
-    // clearInterval(timer)
-let timeLeft = 60;
-console.log(timeLeft);
-let timer = setInterval(function() {
-    timerEl.textContent = timeLeft;
-    timeLeft -= 1;
-    if (timeLeft < 0) {
-        countdownEl.textContent = `That's it bubba!`
-        clearInterval(timer)
-    }
+    let timeLeft = 60;
     console.log(timeLeft);
-    
-}, 1000)
+    let timer = setInterval(function () {
+        timerEl.textContent = timeLeft;
+        timeLeft = timeLeft - 1;
+        if (timeLeft < 0) {
+            countdownEl.textContent = `That's it bubba!`
+            clearInterval(timer)
+        }
+        console.log(timeLeft);
 
+
+    }, 1000)
+    goBtn.setAttribute = ("hidden", true)
 }
 
 
@@ -81,15 +81,21 @@ function init(){
 
 
 function getFacts() {
-    if(turn === 5) {
-        form.setAttribute("hidden", true)
-    }
-    let getFact = data.pop()
+    if(usedFacts.length === 5) {
+        trueBtn.setAttribute("hidden", true)
+        falseBtn.setAttribute("hidden", true)
+    } 
+    let randomIndex = Math.floor(Math.random()*data.length)
+    let getFact = data[randomIndex]
+    console.log(getFact);
+    data.splice(randomIndex, 1);
     usedFacts.push(getFact)
+    console.log(usedFacts)
     fact = getFact.fact;
     category = getFact.category
     theAnswer = getFact.answer
     message = getFact.mess
+    
     render();
 }
 
@@ -101,6 +107,7 @@ function render() {
     trueBtn.style.color = "black"
     falseBtn.style.backgroundColor = "#EFEFEF"
     falseBtn.style.color = "black"
+    
     
 }
 function handleClickTrue(event) {
