@@ -2,7 +2,7 @@
 
 let data = [
 {fact: `Though Aretha Franklin's version of "Respect" is the most well-known, it was originally recorded by the song's writer, Stevie Wonder.`, category: `music`, answer: `false`, mess: `That would be Otis Redding.`},    
-{fact: `'I am I because my little dog knows me.'Wrote Gertrude Stein.`, category: 'literature',
+{fact: `'I am I because my little dog knows me.' Wrote Gertrude Stein.`, category: 'literature',
 answer: 'true', mess: `The little dog was a poodle named Basket.`}, 
 {fact: `The octave and major 5th were discovered by Pythagoras.`, category: 'music', answer: 'true', mess: 'The triangle guy!'},
 {fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports', answer: 'false', mess: `Gretzky held 61 NHL records when he retired in 1999.`}, 
@@ -63,6 +63,7 @@ function handleClickGo(event) {
             falseBtn.setAttribute("hidden", true)
             displayFact.setAttribute("hidden", true)
             displayCategory.setAttribute("hidden", true)
+            displayMessage.textContent = ("You scored " + score + " out of 5! And that's a fact!")
             clearInterval(timer)
         }
     }, 1000)
