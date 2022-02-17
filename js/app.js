@@ -2,18 +2,16 @@
 
 let data = [
 {fact: `Though Aretha Franklin's version of "Respect" is the most well-known, it was originally recorded by the song's writer, Stevie Wonder.`, category: `music`, answer: `false`, mess: `That would be Otis Redding.`},
-{fact: `General Relativity: 1915.`, category: `academia`, answer: `true`, mess: `Einstein's theory was confirmed by the total solar eclipse of May 29, 1919.`}    
+{fact: `General Relativity: 1915.`, category: `academia`, answer: `true`, mess: `Einstein's theory was confirmed by the total solar eclipse of May 29, 1919.`}, 
 {fact: `'I am I because my little dog knows me.' Wrote Gertrude Stein.`, category: 'literature',
 answer: 'true', mess: `The little dog was a poodle named Basket.`}, 
 {fact: `The octave and major 5th were discovered by Pythagoras.`, category: 'music', answer: 'true', mess: 'The triangle guy!'},
 {fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports', answer: 'false', mess: `Gretzky held 61 NHL records when he retired in 1999.`}, 
-{fact: `Jack Nicholson made a then record $60 million for his role as the Joker in 1989's Batman.`, category: 'the movies', answer: 'true', mess: 'Nicholson earned points off the box office AND on merchandise'},
+{fact: `Jack Nicholson made a then record $60 million for his role as the Joker in 1989's Batman.`, category: 'the movies', answer: 'true', mess: 'Nicholson earned points off the box office AND on merchandise.'},
 {fact: `The famous bass lines from Seinfeld were performed by Red Hot Chili Peppers founding member Flea.`, 
 category: 'television', answer: 'false', mess: 'Composer Jonathan Wolf actually used a synthesizer for his iconic theme.'}]
 
-
 /*-------------------------------- Variables --------------------------------*/
-
 let score, fact, message, category, theAnswer, usedFacts = []
 let hasAnswered = false
 
@@ -47,8 +45,6 @@ function init(){
     render();
 }   
 
-
-
 function handleClickGo(event) {
     let timeLeft = 60
     goBtnSays.volume = .10
@@ -68,7 +64,6 @@ function handleClickGo(event) {
             clearInterval(timer)
         }
     }, 1000)
-    
 }
 
 function getFacts() {
@@ -85,10 +80,8 @@ function getFacts() {
     category = getFact.category
     theAnswer = getFact.answer
     message = getFact.mess
-    console.log(usedFacts)
     render();
 }
-
 
 function render() {
     if(usedFacts.length > 5){
@@ -108,6 +101,7 @@ function render() {
     falseBtn.style.color = "black"
     
 }
+
 function handleClickTrue(event) {
     event.preventDefault();
     trueBtnSays.volume = .10

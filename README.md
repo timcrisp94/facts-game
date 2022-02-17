@@ -22,7 +22,8 @@
 
 ## Images
 <ul>
-  <li>Header ![header](images/pythagoras.png)
+  <li>Header 
+  ![header](images/pythagoras.png)
   <li>
 
 ## ⚙ Technologies used
