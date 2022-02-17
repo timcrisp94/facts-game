@@ -1,19 +1,28 @@
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%; */
   color: black;
-  margin: 0;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  min-height: 100vh;
+  font-size: 16px;
+  height: auto;
+  max-width: 100vw;
 }
 h1 {
+  /* text-align: center; */
   font-family: 'IBM Plex Mono', monospace;
   font-size: 24px;
   margin: auto;
+  padding: 0, 0, 20px, 0;
   
 }
-.grid-container {
+.notecard {
+  display: flex;
+  flex-direction: column;
   border: 3px solid black;
-  width: 500px;
+  width: 60%;
   height: 300px;
   font-family: 'IBM Plex Mono', monospace;
   align-items: baseline;
@@ -23,13 +32,44 @@ h1 {
 
 }
 
+.buttons {
+  padding: 10px;
+  display: flex;
+  align-items: flex-end;
+
+}
+
+#display-score {
+  order: -1;
+  align-self: flex-end;
+  padding: 10px;
+  
+}
+
+#category {
+  margin: 10px;
+
+}
+
+#fact {
+  padding: 10px;
+  align-items: center;
+
+}
+
+#message {
+  padding: 10px;
+  font-weight: bold;
+}
+
 #true-btn, #false-btn {
-    display: grid;
+    display: flex;
+    justify-content: flex-end;
     border: px solid #302f3a;
     color: #302f3a;
     margin: 1rem 3rem;
-    font-size: 1.15rem;
-    
+    font-size: .5rem;
+    padding: 10px 24px;
   }
 
-  
+  /* flex instead of grid */
