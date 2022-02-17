@@ -1,3 +1,5 @@
+
+
 ## If you want to play the game, check it out here:   https://timcrisp94.github.io/facts-game/
 
 ## User Stories
@@ -32,3 +34,4 @@
 <ul>
 <li>[IMDB] (https://www.imdb.com/)
 <li>[Mixkit] (https://mixkit.co/)
+<li>Header image is a drawing of Igor Stravinsky by Jean Cocteau, sourced from the New York Times (https://static01.nyt.com/images/2012/09/16/arts/16RITE2_SPAN/16JPRITE2-superJumbo.jpg?quality=75&auto=webp)
