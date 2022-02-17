@@ -13,24 +13,22 @@
   <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
+  <header><img id="igor"src="https://static01.nyt.com/images/2012/09/16/arts/16RITE2_SPAN/16JPRITE2-superJumbo.jpg?quality=75&auto=webp" width="300" height="200"></header>
   <h1>"facts"</h1>
   <div id="countdown">
-    <p id="instructions">For each stated "fact," <br>choose whether the fact is<br>true or false. You have <span id="timer">60</span>seconds!</p>
-    <button class='btn btn-success' id='go-button'>Go!</button>
-
+    <p id="instructions">Choose true or false for each stated "fact." <br>You have <span id="timer">60</span> seconds!</p>
+    
   </div>
  
   <section class="notecard">
-   
-  <!-- add timer message to init -->
-  <!-- call timer for render functions -->
     <div id="category">category:</div>
     <div id="display-score">score: </div>
-    <div id="game-over">That's it bubba.</div>
+    <div id="game-over"></div>
     <div id="fact"></div>
     <div id="message"></div>
   </section>
   <div class="buttons">
+    <button class='btn btn-success' id='go-button'>Go!</button>
     <button type="submit" id="true">True</button>
     <button type="submit" id="false">False</button>
   </form>

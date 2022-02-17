@@ -1,12 +1,3 @@
-// X // AAU I will be presented with a fact
-// X AAU I will click a button for true or false. 
-//      the buttons will animate green for true and red for false,
-//  X    this animation will be delayed 1-2 seconds.
-//  X AAU I will see a message on the bottom lines of the card related t
-
-//  AAU the game will be over after three strikes
-
-
 /*-------------------------------- Constants --------------------------------*/
 
 let data = [
@@ -22,18 +13,11 @@ category: 'television', answer: 'false', mess: 'Composer Jonathan Wolf actually 
 
 /*-------------------------------- Variables --------------------------------*/
 
-let player, score, fact, message, category, theAnswer, usedFacts = []
+let score, fact, message, category, theAnswer, usedFacts = []
 let hasAnswered = false
 
 let countdownEl = document.getElementById("countdown")
-const timerEl = document.getElementById("timer");
-const goBtn = document.getElementById("go-button");
-
-
-
-
-
-
+const timerEl = document.getElementById("timer")
 /*------------------------ Cached Element References ------------------------*/
 const notecard = document.querySelector(".grid-container")
 const displayCategory = document.querySelector("#category")
@@ -43,44 +27,48 @@ const displayMessage = document.querySelector("#message")
 const form = document.querySelector(".buttons")
 const trueBtn = document.querySelector("#true")
 const falseBtn = document.querySelector("#false")
-const timerBtn = document.querySelector("#timer-btn")
+const goBtn = document.querySelector("#go-button")
 const gameOver = document.querySelector("#game-over")
+const countdown = document.querySelector("#countdown")
 
 /*----------------------------- Event Listeners -----------------------------*/
 trueBtn.addEventListener("click", handleClickTrue)
 falseBtn.addEventListener("click", handleClickFalse)
-// timerBtn.addEventListener("click", handleClickTimer)
-// console.log(timerBtn);
+goBtn.addEventListener("click", handleClickGo);
 /*-------------------------------- Functions --------------------------------*/
 init();
 function init(){
     score = 0  
     turn = 0
+    trueBtn.setAttribute("hidden", true)
+    falseBtn.setAttribute("hidden", true)
     getFacts();
     render();
 }   
 
-goBtn.addEventListener("click", handleClickGo);
+
 
 function handleClickGo(event) {
-    let timeLeft = 60;
-    console.log(timeLeft);
+    let timeLeft = 60
+    goBtn.setAttribute("hidden", true)
+    trueBtn.removeAttribute("hidden")
+    falseBtn.removeAttribute("hidden")
     let timer = setInterval(function () {
-        timerEl.textContent = timeLeft;
-        timeLeft = timeLeft - 1;
+        timerEl.textContent = timeLeft
+        timeLeft = timeLeft - 1
         if (timeLeft < 0) {
-            countdownEl.textContent = `That's it bubba!`
+            gameOver.removeAttribute("hidden")
+            trueBtn.setAttribute("hidden", true)
+            falseBtn.setAttribute("hidden", true)
+            displayFact.setAttribute("hidden", true)
+            displayCategory.setAttribute("hidden", true)
             clearInterval(timer)
         }
-        console.log(timeLeft);
-
-
     }, 1000)
-    goBtn.setAttribute = ("hidden", true)
+    
 }
 
 function getFacts() {
-    
     gameOver.setAttribute("hidden", true) 
     let randomIndex = Math.floor(Math.random()*data.length)
     let getFact = data[randomIndex]
@@ -98,13 +86,15 @@ function getFacts() {
 
 function render() {
     if(usedFacts.length > 5){
-        trueBtn.setAttribute("hidden", true);
-        falseBtn.setAttribute("hidden", true);
-        gameOver.removeAttribute("hidden");
-        displayFact.setAttribute("hidden", true);
-        displayCategory.setAttribute("hidden", true);
+        trueBtn.setAttribute("hidden", true)
+        falseBtn.setAttribute("hidden", true)
+        gameOver.removeAttribute("hidden")
+        displayFact.setAttribute("hidden", true)
+        displayCategory.setAttribute("hidden", true)
+        countdown.setAttribute("hidden", true)
+        // textContent = ("You scored " + score + "out of 5 with " + timeLeft + "seconds to spare!")
     }
-    displayFact.textContent = fact;
+    displayFact.textContent = fact
     displayCategory.textContent = ('category: ' + category)
     displayMessage.setAttribute("hidden", true)
     trueBtn.style.backgroundColor = "#EFEFEF" 
@@ -133,7 +123,6 @@ function handleClickTrue(event) {
         return
     }
     
-
 }
 
 function handleClickFalse(event) {
@@ -149,7 +138,7 @@ function handleClickFalse(event) {
         trueBtn.style.color = "white"
         displayMessage.style.color = "green"
         }
-        hasAnswered = true;
+        hasAnswered = true
         secondRender();
         } else {
             return
@@ -160,7 +149,7 @@ function handleClickFalse(event) {
 function secondRender() {
     if (turn < usedFacts.length) {
         turn++
-        displayScore.textContent = ("score: " + score + "/" + turn);
+        displayScore.textContent = ("score: " + score + "/" + turn)
         setTimeout(function () {
             displayMessage.removeAttribute("hidden")
             displayMessage.textContent = message

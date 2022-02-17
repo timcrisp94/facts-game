@@ -18,7 +18,8 @@
   <li>Javascript</li>
   <li>CSS</li>
   <li>HTML</li>
-  <li>git/li>
+  <li>Google Fonts</li>
+  <li>git</li>
 </ul>
 
 ## ⚙ Recent Changes
@@ -26,3 +27,8 @@
 <li>Minimized JS/CSS/HTML text 
 <li>Created a unique unique data structure for facts
 </ul>
+
+## Credits
+<ul>
+<li>[IMDB] (https://www.imdb.com/)
+<li>[Mixkit] (https://mixkit.co/)
