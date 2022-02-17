@@ -14,12 +14,14 @@
 </head>
 <body>
   <h1>"facts"</h1>
-  <div id="game-over">that's it</div>
-  <section class="notecard">
-    <p class="instructions">For each stated "fact," choose whether the fact is true or false. You have 60 seconds to answer 5 facts!<br>
-    <p class="timer"><span id="timer">60</span></p>
-    <button id="timer-btn">Go!</button>
+  <div id="countdown">
+    <p id="instructions">For each stated "fact," <br>choose whether the fact is<br>true or false. You have <span id="timer">60</span>seconds!</p>
+    <button class='btn btn-success' id='go-button'>Go!</button>
 
+  </div>
+ 
+  <section class="notecard">
+   
   <!-- add timer message to init -->
   <!-- call timer for render functions -->
     <div id="category">category:</div>

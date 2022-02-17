@@ -24,11 +24,34 @@ console.log(data[0].fact)
 
 /*-------------------------------- Variables --------------------------------*/
 
-// The reason I'm going to store that message in a variable is so that I can set it during any number of different functions that I write and then once that function invokes render, we can display whatever that message is in our render. I set message as a variable and then render this message to an element that we set as a CER, whenever my render function is invoked. 
 let player, score, fact, message, category, theAnswer, usedFacts = []
 let hasAnswered = false
-let timer;
+
+let countdownEl = document.getElementById("countdown")
+const timerEl = document.getElementById("timer");
+const goBtn = document.getElementById("go-button");
+
+
+
+goBtn.addEventListener("click", handleClickGo);
+
+function handleClickGo(event) {
+    // clearInterval(timer)
 let timeLeft = 60;
+console.log(timeLeft);
+let timer = setInterval(function() {
+    timerEl.textContent = timeLeft;
+    timeLeft -= 1;
+    if (timeLeft < 0) {
+        countdownEl.textContent = `That's it bubba!`
+        clearInterval(timer)
+    }
+    console.log(timeLeft);
+    
+}, 1000)
+
+}
+
 
 /*------------------------ Cached Element References ------------------------*/
 const notecard = document.querySelector(".grid-container")
@@ -39,15 +62,14 @@ const displayMessage = document.querySelector("#message")
 const form = document.querySelector(".buttons")
 const trueBtn = document.querySelector("#true")
 const falseBtn = document.querySelector("#false")
-const gameOver = document.querySelector("#game-over")
 const timerBtn = document.querySelector("#timer-btn")
 
 
 /*----------------------------- Event Listeners -----------------------------*/
 trueBtn.addEventListener("click", handleClickTrue)
 falseBtn.addEventListener("click", handleClickFalse)
-timerBtn.addEventListener("click", handleClickTimer)
-console.log(timerBtn);
+// timerBtn.addEventListener("click", handleClickTimer)
+// console.log(timerBtn);
 /*-------------------------------- Functions --------------------------------*/
 init();
 function init(){
@@ -60,7 +82,6 @@ function init(){
 
 function getFacts() {
     if(turn === 5) {
-        gameOver.removeAttribute("hidden")
         form.setAttribute("hidden", true)
     }
     let getFact = data.pop()
@@ -69,7 +90,6 @@ function getFacts() {
     category = getFact.category
     theAnswer = getFact.answer
     message = getFact.mess
-   
     render();
 }
 
@@ -145,36 +165,3 @@ function secondRender() {
     }
 }
 
-
-function handleClickTimer() {
-    start();
-    console.log("hi)")
-    
-}
-
-// function gameOver() {
-   
-//     cancelInterval(timer);
-    
-   
-//   }
-  
-  function updateTimer() {
-    
-    if(timeLeft >= 0) {
-        timeLeft = timeLeft - 1;
-    }
-    
-    else {
-      gameOver();
-    }
-  }
-  
-  
-  function handleClickTimer() {
-    
-    timer = setInterval(updateTimer, 1000);
-    updateTimer();
-    
-     
-  }
