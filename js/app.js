@@ -7,7 +7,7 @@ let data = [
 answer: 'true', mess: `The little dog was a poodle named Basket.`}, 
 {fact: `The octave and major 5th were discovered by Pythagoras.`, category: 'music', answer: 'true', mess: 'The triangle guy!'},
 {fact: `Wayne Gretzky retired with 51 NHL records.`, category: 'sports', answer: 'false', mess: `Gretzky held 61 NHL records when he retired in 1999.`}, 
-{fact: `Jack Nicholson made a then record $60 million for his role as the Joker in 1989's Batman.`, category: 'the movies', answer: 'true', mess: 'Nicholson earned points off the box office AND on merchandise.'},
+{fact: `Jack Nicholson made a then-record $60 million for his role as the Joker in 1989's Batman.`, category: 'the movies', answer: 'true', mess: 'Nicholson earned points off the box office AND on merchandise.'},
 {fact: `The famous bass lines from Seinfeld were performed by Red Hot Chili Peppers founding member Flea.`, 
 category: 'television', answer: 'false', mess: 'Composer Jonathan Wolf actually used a synthesizer for his iconic theme.'}]
 
