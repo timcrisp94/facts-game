@@ -23,8 +23,15 @@
 ## Images
 <ul>
   <li>Header 
-  ![header](images/pythagoras.png)
-  <li>
+
+  ![header](/images/header.png)
+  <li>Game Play
+
+  ![game play](/images/pythagoras.png)
+
+  <li>End Game 
+
+  ![end](images/end.png)
 
 ## ⚙ Technologies used
 <ul>
@@ -36,10 +43,11 @@
   <li>git</li>
 </ul>
 
-## ⚙ Recent Changes
+## ⚙ Icebox
 <ul>
-<li>Minimized JS/CSS/HTML text 
-<li>Created a unique unique data structure for facts
+<li>Minimize Javascript 
+<li>Create an introduction card
+<li>Add to facts
 </ul>
 
 ## Credits
