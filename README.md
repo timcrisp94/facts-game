@@ -52,6 +52,7 @@
 
 ## Credits
 <ul>
-<li>[IMDB] (https://www.imdb.com/)
-<li>[Mixkit] (https://mixkit.co/)
-<li>Header image is a drawing of Igor Stravinsky by Jean Cocteau, sourced from the New York Times (https://static01.nyt.com/images/2012/09/16/arts/16RITE2_SPAN/16JPRITE2-superJumbo.jpg?quality=75&auto=webp)
+<li>[The work of David Markson](https://www.amazon.com/David-Markson/e/B000APBW8O%3Fref=dbs_a_mng_rwt_scns_share)
+<li>[IMDB](https://www.imdb.com/)
+<li>[Mixkit](https://mixkit.co/)
+<li>Header image is a drawing of Igor Stravinsky by Jean Cocteau, sourced from the [New York Times](https://static01.nyt.com/images/2012/09/16/arts/16RITE2_SPAN/16JPRITE2-superJumbo.jpg?quality=75&auto=webp)

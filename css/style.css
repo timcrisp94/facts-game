@@ -3,8 +3,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-template-rows: 20% 20% 20% 20% 20%; */
   color: black;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 16px;
@@ -12,7 +10,6 @@ body {
   max-width: 100vw;
 }
 h1 {
-  /* text-align: center; */
   font-family: 'IBM Plex Mono', monospace;
   font-size: 24px;
   margin: auto;
@@ -79,5 +76,3 @@ h1 {
     font-size: .5rem;
     padding: 10px 24px;
   }
-
-  /* flex instead of grid */
